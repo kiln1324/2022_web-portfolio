@@ -54,7 +54,10 @@
   justify-content: center;
 }
 .header .logo {
-  padding: 30px 0;
+  margin: 20px 0;
+}
+.header .logo a {
+  padding: 10px;
 }
 .header .logo svg {
   width: 180px;
@@ -207,35 +210,10 @@
   line-height: 1.5;
 }
 .main .go-works-btn {
-  position: relative;
   top: 200px;
   padding: 32px 60px;
   border-radius: 200px;
-  border: 2px solid var(--white-color);
-  background-color: transparent;
-  box-sizing: border-box;
-  text-transform: uppercase;
   font-size: 2rem;
-  font-weight: 600;
-  color: var(--white-color);
-  transition: all 0.6s;
-}
-.main .go-works-btn::before {
-  content: "";
-  width: 100%;
-  height: 100%;
-  border-radius: 200px;
-  background-color: var(--point-color);
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  transform: scale(0);
-  transform-origin: center;
-  transition: all 0.4s;
-}
-.main .go-works-btn:hover:before, .main .go-works-btn:focus:before {
-  transform: scale(1);
 }
 
 /* ------------------------ 퍼블리싱 ------------------------ */
@@ -289,11 +267,12 @@
   top: 8px;
   white-space: nowrap;
   opacity: 0;
+  transform-origin: left;
   transition: 0.6s;
 }
 .img-wrap .project-link a:hover, .img-wrap .project-link a:focus {
-  transform: rotate(-8deg);
-  box-shadow: 6px 0 0 var(--point-color);
+  transform: translateX(6px);
+  box-shadow: -6px 0 0 var(--point-color);
 }
 .img-wrap .project-link a:hover:after, .img-wrap .project-link a:focus:after {
   opacity: 1;
@@ -315,8 +294,8 @@
   transform: translateX(-100%);
 }
 .publishing-project:nth-child(2n) .project-link a:hover, .publishing-project:nth-child(2n) .project-link a:focus {
-  transform: rotate(8deg);
-  box-shadow: -6px 0 0 var(--point-color);
+  transform: translateX(-6px);
+  box-shadow: 6px 0 0 var(--point-color);
 }
 .publishing-project:nth-child(2n) .project-link a:hover:after, .publishing-project:nth-child(2n) .project-link a:focus:after {
   left: -40px;
@@ -376,9 +355,6 @@
   overflow: hidden;
   transition: 0.4s;
 }
-.script ul li a:hover, .script ul li a:focus {
-  box-shadow: 10px 10px 0 var(--point-color);
-}
 .script ul li a .img-box img {
   width: 100%;
 }
@@ -402,6 +378,11 @@
   margin-top: 8px;
   line-height: 1.5;
 }
+.script ul li a:hover,
+.script ul li a:focus {
+  box-shadow: 8px 8px 0 var(--point-color);
+  transform: translate(-8px, -8px);
+}
 .script ul li a:hover .script-detail,
 .script ul li a:focus .script-detail {
   bottom: 0;
@@ -423,7 +404,7 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  height: 500px;
+  height: 420px;
 }
 .me-cards .info-card .img-card img {
   width: 100%;
@@ -470,6 +451,19 @@
   display: block;
   text-decoration: underline;
 }
+.me-cards .info-card .info-btn-grp {
+  margin-left: 40px;
+}
+.me-cards .info-card .info-btn-grp .resume-btn,
+.me-cards .info-card .info-btn-grp .portfolio-download-btn {
+  padding: 16px 24px;
+  border-radius: 200px;
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+.me-cards .info-card .info-btn-grp .portfolio-download-btn {
+  margin-left: 16px;
+}
 .me-cards .skill-list {
   padding: 40px;
   margin-top: 80px;
@@ -504,51 +498,50 @@
 }
 
 /* ---------------------- footer -------------------- */
-footer {
-  margin-top: 200px;
-}
 footer .contact {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.contact::before, .contact:after {
-  content: "";
-  display: block;
-  position: absolute;
-  background-color: var(--default-color);
-}
-.contact::before {
-  width: 24px;
-  height: 24px;
-  top: -20px;
-  transform: rotate(45deg);
-}
-.contact:after {
-  content: "CLICK and COPY";
-  color: var(--white-color);
-  width: 200px;
-  height: 40px;
-  line-height: 40px;
   text-align: center;
-  border-radius: 8px;
-  top: -48px;
-}
-.contact .e-mail {
-  font-size: 6.4rem;
-  font-weight: 500;
+  margin: 300px 0 160px;
   position: relative;
 }
-.contact .ment {
-  display: block;
-  font-size: 2.4rem;
-  margin-top: 16px;
+footer .contact:before {
+  content: "매일매일 확인하고 있어요!";
+  padding: 8px 24px;
+  border-radius: 40px;
+  background-color: var(--white-color);
+  color: var(--default-color);
+  font-weight: 600;
+  position: absolute;
+  top: -60px;
+}
+footer .contact:after {
+  content: "";
+  border: 8px solid transparent;
+  border-right-color: var(--white-color);
+  border-bottom-color: var(--white-color);
+  position: absolute;
+  top: -32px;
+  transform: rotate(45deg);
+}
+footer .contact .ment {
+  font-size: 3rem;
+  font-weight: 200;
+}
+footer .contact .ment span {
+  font-weight: 600;
+  background-color: var(--point-color);
 }
 
 .footer-logo {
-  margin-top: 40px;
-  text-align: center;
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+}
+.footer-logo a {
+  width: 120px;
+  padding: 10px;
 }
 .footer-logo svg {
   width: 120px;

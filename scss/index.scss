@@ -63,7 +63,10 @@
   justify-content: center;
 
   .logo {
-    padding: 30px 0;
+    margin: 20px 0;
+    a {
+      padding: 10px;
+    }
 
     svg {
       width: 180px;
@@ -240,41 +243,11 @@
     }
   }
   .go-works-btn {
-    position: relative;
     top: 200px;
     padding: 32px 60px;
     border-radius: 200px;
-    border: 2px solid var(--white-color);
-    background-color: transparent;
-    box-sizing: border-box;
 
-    text-transform: uppercase;
     font-size: 2rem;
-    font-weight: 600;
-    color: var(--white-color);
-
-    transition: all 0.6s;
-
-    &::before {
-      content: "";
-      width: 100%;
-      height: 100%;
-
-      border-radius: 200px;
-      background-color: var(--point-color);
-
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      transform: scale(0);
-      transform-origin: center;
-      transition: all 0.4s;
-    }
-    &:hover:before,
-    &:focus:before {
-      transform: scale(1);
-    }
   }
 }
 
@@ -333,12 +306,14 @@
         top: 8px;
         white-space: nowrap;
         opacity: 0;
+
+        transform-origin: left;
         transition: 0.6s;
       }
       &:hover,
       &:focus {
-        transform: rotate(-8deg);
-        box-shadow: 6px 0 0 var(--point-color);
+        transform: translateX(6px);
+        box-shadow: -6px 0 0 var(--point-color);
       }
       &:hover:after,
       &:focus:after {
@@ -366,8 +341,8 @@
       }
       &:hover,
       &:focus {
-        transform: rotate(8deg);
-        box-shadow: -6px 0 0 var(--point-color);
+        transform: translateX(-6px);
+        box-shadow: 6px 0 0 var(--point-color);
       }
       &:hover:after,
       &:focus:after {
@@ -437,11 +412,6 @@
         overflow: hidden;
         transition: 0.4s;
 
-        &:hover,
-        &:focus {
-          box-shadow: 10px 10px 0 var(--point-color);
-        }
-
         .img-box {
           img {
             width: 100%;
@@ -470,6 +440,13 @@
           }
         }
       }
+
+      a:hover,
+      a:focus {
+        box-shadow: 8px 8px 0 var(--point-color);
+        transform: translate(-8px, -8px);
+      }
+
       a:hover .script-detail,
       a:focus .script-detail {
         bottom: 0;
@@ -495,7 +472,7 @@
       display: flex;
       align-items: center;
       overflow: hidden;
-      height: 500px;
+      height: 420px;
 
       img {
         width: 100%;
@@ -543,6 +520,20 @@
             text-decoration: underline;
           }
         }
+      }
+    }
+
+    .info-btn-grp {
+      margin-left: 40px;
+      .resume-btn,
+      .portfolio-download-btn {
+        padding: 16px 24px;
+        border-radius: 200px;
+        font-size: 1.8rem;
+        font-weight: 400;
+      }
+      .portfolio-download-btn {
+        margin-left: 16px;
       }
     }
   }
@@ -595,56 +586,57 @@
 /* ---------------------- footer -------------------- */
 
 footer {
-  margin-top: 200px;
-
   .contact {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-}
-
-.contact {
-  &::before,
-  &:after {
-    content: "";
-    display: block;
-    position: absolute;
-    background-color: var(--default-color);
-  }
-  &::before {
-    width: 24px;
-    height: 24px;
-    top: -20px;
-
-    transform: rotate(45deg);
-  }
-  &:after {
-    content: "CLICK and COPY";
-    color: var(--white-color);
-    width: 200px;
-    height: 40px;
-    line-height: 40px;
     text-align: center;
-    border-radius: 8px;
-    top: -48px;
-  }
-  .e-mail {
-    font-size: 6.4rem;
-    font-weight: 500;
+    margin: 300px 0 160px;
 
     position: relative;
-  }
-  .ment {
-    display: block;
-    font-size: 2.4rem;
-    margin-top: 16px;
+    &:before {
+      content: "매일매일 확인하고 있어요!";
+      padding: 8px 24px;
+      border-radius: 40px;
+      background-color: var(--white-color);
+
+      color: var(--default-color);
+      font-weight: 600;
+
+      position: absolute;
+      top: -60px;
+    }
+
+    &:after {
+      content: "";
+      border: 8px solid transparent;
+      border-right-color: var(--white-color);
+      border-bottom-color: var(--white-color);
+      position: absolute;
+      top: -32px;
+      transform: rotate(45deg);
+    }
+
+    .ment {
+      font-size: 3rem;
+      font-weight: 200;
+
+      span {
+        font-weight: 600;
+        background-color: var(--point-color);
+      }
+    }
   }
 }
 
 .footer-logo {
-  margin-top: 40px;
-  text-align: center;
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  a {
+    width: 120px;
+    padding: 10px;
+  }
   svg {
     width: 120px;
     height: 40px;
