@@ -1,0 +1,32 @@
+
+css icon
+<a href="https://www.flaticon.com/free-icons/css-3" title="css 3 icons">Css 3 icons created by Freepik - Flaticon</a>
+
+js icon
+<a href="https://www.flaticon.com/free-icons/javascript" title="javascript icons">Javascript icons created by Freepik - Flaticon</a>
+
+html icon
+<a href="https://www.flaticon.com/free-icons/html-5" title="html 5 icons">Html 5 icons created by Freepik - Flaticon</a>
+
+photoshop icon
+<a href="https://www.flaticon.com/free-icons/photoshop" title="photoshop icons">Photoshop icons created by Freepik - Flaticon</a>
+
+illustrator icon
+<a href="https://www.flaticon.com/free-icons/adobe" title="adobe icons">Adobe icons created by Freepik - Flaticon</a>
+
+mail icon
+<a href="https://www.flaticon.com/free-icons/email" title="email icons">Email icons created by Uniconlabs - Flaticon</a>
+
+resume icon
+<a href="https://www.flaticon.com/free-icons/portfolio" title="portfolio icons">Portfolio icons created by Freepik - Flaticon</a>
+
+portfolio pdf icon
+<a href="https://www.flaticon.com/free-icons/pdf" title="pdf icons">Pdf icons created by Freepik - Flaticon</a>
+
+background-image
+Photo by <a href="https://unsplash.com/@rhindaxu?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Linda Xu</a> on <a href="https://unsplash.com/s/photos/sea-illust?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
+
+화살표 html 코드
+&#129027;
+

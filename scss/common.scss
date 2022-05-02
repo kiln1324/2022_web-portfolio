@@ -1,0 +1,74 @@
+@charset "utf-8";
+
+/* 
+d:
+cd \윤다슬\코딩\2022_web-portfolio
+sass --watch scss:css
+ */
+:root {
+  font-size: 10px;
+  --default-color: #0d1419;
+  --point-color: coral;
+  --white-color: #fff;
+  --reverse-color: #fff;
+}
+body {
+  background-color: var(--default-color);
+  /* background-image: url(../img/bg2.jpg), url(../img/bg-reverse2.jpg);
+  background-repeat: no-repeat;
+  background-position: top center, bottom center;
+  background-size: contain; */
+
+  font-family: "Roboto", sans-serif;
+  color: var(--white-color);
+  font-size: 1.6rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+h3,
+h2,
+p,
+span {
+  -webkit-user-select: text;
+  user-select: text;
+  cursor: text;
+  &::selection {
+    background-color: coral;
+  }
+}
+
+.inner {
+  min-width: 480px;
+  width: 60vw;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.sec-tit {
+  display: inline-block;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12rem;
+  margin-left: 40px;
+
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--white-color);
+  color: transparent;
+
+  transform: rotate(90deg);
+  transform-origin: left;
+  line-height: 0;
+
+  position: relative;
+  left: 40px;
+  z-index: 80;
+}
+
+.works article,
+.about article {
+  padding-top: 40px;
+  margin-top: 100px;
+  position: relative;
+}
