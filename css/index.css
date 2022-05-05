@@ -271,11 +271,13 @@
   transform-origin: left;
   transition: 0.6s;
 }
-.img-wrap .project-link a:hover, .img-wrap .project-link a:focus {
+.img-wrap .project-link a:hover,
+.img-wrap .project-link a:focus {
   transform: translateX(6px);
   box-shadow: -6px 0 0 var(--point-color);
 }
-.img-wrap .project-link a:hover:after, .img-wrap .project-link a:focus:after {
+.img-wrap .project-link a:hover:after,
+.img-wrap .project-link a:focus:after {
   opacity: 1;
   left: 100px;
 }
@@ -294,11 +296,13 @@
   left: -20px;
   transform: translateX(-100%);
 }
-.publishing-project:nth-child(2n) .project-link a:hover, .publishing-project:nth-child(2n) .project-link a:focus {
+.publishing-project:nth-child(2n) .project-link a:hover,
+.publishing-project:nth-child(2n) .project-link a:focus {
   transform: translateX(-6px);
   box-shadow: 6px 0 0 var(--point-color);
 }
-.publishing-project:nth-child(2n) .project-link a:hover:after, .publishing-project:nth-child(2n) .project-link a:focus:after {
+.publishing-project:nth-child(2n) .project-link a:hover:after,
+.publishing-project:nth-child(2n) .project-link a:focus:after {
   left: -40px;
 }
 
@@ -453,12 +457,11 @@
   text-decoration: underline;
 }
 .me-cards .info-card .info-btn-grp {
-  margin-left: 40px;
   display: flex;
+  margin-left: 40px;
 }
 .me-cards .info-card .info-btn-grp .resume-btn,
 .me-cards .info-card .info-btn-grp .portfolio-download-btn {
-  /* display: inline-block; */
   padding: 16px 24px;
   border-radius: 200px;
   font-size: 1.8rem;
@@ -487,7 +490,8 @@
   font-weight: 600;
   font-size: 2rem;
 }
-.me-cards .skill-list .skill-card h3 a:hover, .me-cards .skill-list .skill-card h3 a:focus {
+.me-cards .skill-list .skill-card h3 a:hover,
+.me-cards .skill-list .skill-card h3 a:focus {
   text-decoration: underline;
 }
 .me-cards .skill-list .skill-card .des {
