@@ -81,9 +81,6 @@
   top: 0;
   z-index: 8888;
 }
-.aside .gnb {
-  text-align: right;
-}
 .aside .lnb {
   position: absolute;
   bottom: 20px;
@@ -93,13 +90,14 @@
 .gnb ul {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  align-items: flex-end;
+  gap: 24px;
 }
 .gnb li {
   position: relative;
 }
 .gnb a {
-  font-size: 6rem;
+  font-size: 4rem;
   color: transparent;
   text-transform: uppercase;
   line-height: 1;
@@ -110,15 +108,19 @@
 }
 .gnb a::before {
   content: attr(data-txt);
+  overflow: hidden;
   width: 100%;
   height: 0;
-  padding-right: 2px;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   color: var(--white-color);
-  text-shadow: 4px 0 0 var(--point-color);
+  text-shadow: 0 0 2px var(--white-color);
+  white-space: nowrap;
   position: absolute;
-  left: 0;
-  transition: height 0.6s;
+  right: 0;
+  bottom: 0;
+  transition: all 0.6s ease-out;
 }
 .gnb li.active a,
 .gnb a:hover,
@@ -202,7 +204,6 @@
   font-size: 10rem;
   font-weight: 600;
   line-height: 0.8;
-  text-shadow: 4px 0 0 var(--point-color);
 }
 .main .container .welcom-ment {
   font-size: 2rem;
@@ -453,9 +454,11 @@
 }
 .me-cards .info-card .info-btn-grp {
   margin-left: 40px;
+  display: flex;
 }
 .me-cards .info-card .info-btn-grp .resume-btn,
 .me-cards .info-card .info-btn-grp .portfolio-download-btn {
+  /* display: inline-block; */
   padding: 16px 24px;
   border-radius: 200px;
   font-size: 1.8rem;
@@ -498,15 +501,18 @@
 }
 
 /* ---------------------- footer -------------------- */
-footer .contact {
+footer {
+  margin-top: 300px;
+}
+
+.contact {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin: 300px 0 160px;
   position: relative;
 }
-footer .contact:before {
+.contact:before {
   content: "매일매일 확인하고 있어요!";
   padding: 8px 24px;
   border-radius: 40px;
@@ -516,7 +522,7 @@ footer .contact:before {
   position: absolute;
   top: -60px;
 }
-footer .contact:after {
+.contact:after {
   content: "";
   border: 8px solid transparent;
   border-right-color: var(--white-color);
@@ -525,17 +531,74 @@ footer .contact:after {
   top: -32px;
   transform: rotate(45deg);
 }
-footer .contact .ment {
+.contact .ment {
   font-size: 3rem;
   font-weight: 200;
 }
-footer .contact .ment span {
+.contact .ment span {
   font-weight: 600;
   background-color: var(--point-color);
 }
 
-.footer-logo {
+.contact_link {
   margin-top: 80px;
+}
+.contact_link ul {
+  display: flex;
+}
+.contact_link ul li ~ li {
+  margin-left: 16px;
+}
+.contact_link ul li a {
+  width: 50px;
+  height: 50px;
+  padding: 4px;
+  border-radius: 50%;
+  border: 1px solid var(--white-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.contact_link ul li a img {
+  width: 100%;
+  display: block;
+  transition: all 0.6s;
+}
+.contact_link ul li a::before {
+  content: attr(data-where);
+  display: block;
+  padding: 8px 24px;
+  text-align: center;
+  background-color: var(--white-color);
+  border-radius: 50px;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+  font-size: 1.6rem;
+  white-space: nowrap;
+  font-weight: 600;
+  color: var(--default-color);
+  position: absolute;
+  top: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: all 0.2s;
+}
+.contact_link ul li a:hover:before,
+.contact_link ul li a:focus:before {
+  top: -52px;
+  opacity: 1;
+}
+.contact_link ul li a:hover img,
+.contact_link ul li a:focus img {
+  transform: rotateY(1turn);
+}
+.contact_link ul li:first-child img {
+  margin-top: -1px;
+}
+
+.footer-logo {
+  margin-top: 100px;
   display: flex;
   justify-content: center;
 }
@@ -561,28 +624,6 @@ footer .contact .ment span {
   text-align: center;
 }
 
-/* footer .footer-box {
-  margin: 0 40px 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 1.8rem;
-  margin-top: 80px;
-  .copy {
-    text-align: center;
-  }
-  .bg-source {
-    justify-self: flex-start;
-    span {
-      display: block;
-      font-weight: 400;
-    }
-    a {
-      display: inline;
-      font-weight: 500;
-    }
-  }
-} */
 /* ---------------------- //footer -------------------- */
 
 /*# sourceMappingURL=index.css.map */
