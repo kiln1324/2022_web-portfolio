@@ -1,0 +1,120 @@
+$main-font: "Lato", sans-serif;
+$point-font: "Cardo", serif;
+$main-color: #222;
+$font-px-size: 16;
+$section-margin: 160px;
+$point-color: royalblue;
+
+body {
+  font-family: $main-font;
+  color: $main-color;
+  background-color: #e9e7e7;
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
+.inner {
+  width: 100%;
+  max-width: 1300px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.clear::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+[class$="tit"] {
+  font-family: $point-font;
+}
+
+.tit {
+  font-size: #{$font-px-size * 4}px;
+  font-size: 4rem;
+  letter-spacing: -0.5px;
+}
+
+[class$="btn"] {
+  display: inline-block;
+  text-transform: capitalize;
+  font-weight: 900;
+  padding: 16px 56px;
+  border: 3px solid #{$main-color};
+  border-radius: 4px;
+  transition: all 0.4s;
+  &:hover {
+    background-color: #{$point-color} !important;
+    border-color: $point-color;
+  }
+}
+
+[class$="des"] {
+  line-height: 1.2;
+  word-spacing: 0.6px;
+}
+
+.fnq {
+  margin-top: $section-margin;
+
+  .inner {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_txt-wrap {
+    width: 50%;
+
+    ul.fnq_list {
+      $list-border: "2px solid #{$main-color}";
+
+      margin-top: 60px;
+      border-top: #{$list-border};
+      border-bottom: #{$list-border};
+
+      li {
+        details {
+          line-height: 1.5;
+
+          summary {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 20px;
+
+            background: url(../img/ico_plus.png) no-repeat calc(100% - 20px)
+              center;
+
+            .q {
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              padding-right: 40px;
+            }
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+
+          .a {
+            display: block;
+            padding: 24px 40px;
+
+            background-color: #eee;
+          }
+        }
+        & ~ li details {
+          border-top: #{$list-border};
+        }
+      }
+    }
+  }
+
+  &_img-box {
+    width: 40%;
+    img {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+@charset "utf-8";
+
+* {
+  margin: 0;
+  padding: 0;
+
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+body {
+  color: #333;
+  cursor: default;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+ul:after,
+ol:after {
+  content: "";
+  display: none;
+  clear: both;
+}
+
+a {
+  text-decoration: none;
+  display: block;
+
+  color: #333;
+}
+
+img {
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+}
+
+fieldset {
+  border: none;
+}
+
+legend {
+  font-size: 0;
+}

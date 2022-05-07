@@ -1,0 +1,100 @@
+body {
+  font-family: "Lato", sans-serif;
+  color: #222;
+  background-color: #e9e7e7;
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
+.inner {
+  width: 100%;
+  max-width: 1300px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.clear::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+[class$=tit] {
+  font-family: "Cardo", serif;
+}
+
+.tit {
+  font-size: 64px;
+  font-size: 4rem;
+  letter-spacing: -0.5px;
+}
+
+[class$=btn] {
+  display: inline-block;
+  text-transform: capitalize;
+  font-weight: 900;
+  padding: 16px 56px;
+  border: 3px solid #222;
+  border-radius: 4px;
+  transition: all 0.4s;
+}
+[class$=btn]:hover {
+  background-color: royalblue !important;
+  border-color: royalblue;
+}
+
+[class$=des] {
+  line-height: 1.2;
+  word-spacing: 0.6px;
+}
+
+.fnq {
+  margin-top: 160px;
+}
+.fnq .inner {
+  display: flex;
+  justify-content: space-between;
+}
+.fnq_txt-wrap {
+  width: 50%;
+}
+.fnq_txt-wrap ul.fnq_list {
+  margin-top: 60px;
+  border-top: 2px solid #222;
+  border-bottom: 2px solid #222;
+}
+.fnq_txt-wrap ul.fnq_list li details {
+  line-height: 1.5;
+}
+.fnq_txt-wrap ul.fnq_list li details summary {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: url(../img/ico_plus.png) no-repeat calc(100% - 20px) center;
+}
+.fnq_txt-wrap ul.fnq_list li details summary .q {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-right: 40px;
+}
+.fnq_txt-wrap ul.fnq_list li details summary:hover {
+  text-decoration: underline;
+}
+.fnq_txt-wrap ul.fnq_list li details .a {
+  display: block;
+  padding: 24px 40px;
+  background-color: #eee;
+}
+.fnq_txt-wrap ul.fnq_list li ~ li details {
+  border-top: 2px solid #222;
+}
+.fnq_img-box {
+  width: 40%;
+}
+.fnq_img-box img {
+  width: 100%;
+}
+
+/*# sourceMappingURL=details-tag_test.css.map */
