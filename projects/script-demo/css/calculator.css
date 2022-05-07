@@ -43,11 +43,55 @@ button:active {
   gap: 16px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), 4px 4px 0 #fff,
     0 0 16px rgba(0, 0, 0, 0.4);
+
+  position: relative;
 }
 
 .calculator div {
   display: flex;
   border-radius: 8px;
+}
+
+.calculator .warning-box {
+  width: 120%;
+  text-align: center;
+  font-size: 1.6rem;
+  color: rgb(255, 85, 23);
+  text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, -1px 1px 0 #fff,
+    1px -1px 0 #fff;
+  font-weight: 900;
+
+  position: absolute;
+  bottom: calc(100% + 16px);
+  left: -10%;
+
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.calculator .warning-box.change {
+  animation-duration: 0.4s;
+  animation-name: warning;
+  animation-iteration-count: 1;
+  opacity: 1;
+}
+
+@keyframes warning {
+  0% {
+    transform: translateX(10px);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  75% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .calculator__display {

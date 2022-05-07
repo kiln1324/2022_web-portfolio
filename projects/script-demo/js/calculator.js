@@ -8,6 +8,7 @@ const btnDelite = document.querySelector(".delite");
 
 const display = document.querySelector(".number");
 const process = document.querySelector(".process");
+const warning = document.querySelector(".warning-box");
 
 const calculateNumber = []; //계산할 때 사용될 숫자를 담아둘 배열
 const calculateOperators = [];
@@ -17,23 +18,31 @@ let arrayNum = 0, //배열인덱스를 위한 변수
   processNow; // 현재 과정창값 저장
 
 //현재 디스플레이값 재정의
-const reDefineDisplay = function () {
+const reDefineDisplay = () => {
   displayNow = display.innerText;
 };
 
 //현재 과정값 재정의
-const reDefineProcess = function () {
+const reDefineProcess = () => {
   processNow = process.innerText;
 };
 
 //디스플레이에 값을 넘기는 함수
-const pushInDisplay = function (number) {
+const pushInDisplay = (number) => {
   display.innerText = number;
 };
 
 // 과정창에 값을 넘기는 함수
-const pushInProcess = function (number) {
+const pushInProcess = (number) => {
   process.innerText = number;
+};
+
+const sendWarning = (string) => {
+  warning.innerText = string;
+  warning.classList.add("change");
+  setTimeout(() => {
+    warning.classList.remove("change");
+  }, 1200);
 };
 
 //초기화 함수
@@ -66,6 +75,7 @@ function pushDot() {
       pushInDisplay(displayNow + ".");
     } else {
       //이미 소수점이 찍힘
+      sendWarning("You already have dot!");
       return false;
     }
   }
@@ -114,11 +124,16 @@ function pushOperator(event) {
   reDefineDisplay(); //현재디스플레이값 재정의
   reDefineProcess(); //현재 과정값 재정의
 
-  if (processNow === "" && displayNow === "0") return false;
+  if ((processNow === "" && displayNow === "0") || displayNow == "0.") {
+    sendWarning("You can't calulate!!");
+    return false;
+  }
+
   //아무것도 없는 상태에서는 연산자를 눌러도 반응이 없도록
   pushInDisplay(0);
   if (processNow === "") {
     //연산자 처음 입력
+
     pushInProcess(displayNow + btnValue);
     calculateOperators[arrayNum] = btnValue;
     arrayNum++;
@@ -158,6 +173,7 @@ function doCalculate(countOfNumber) {
     prevResult =
       calculateNumber[i] + calculateOperators[i] + calculateNumber[nexti];
   }
+
   prevResult = eval(prevResult);
   return prevResult;
 }
@@ -165,10 +181,11 @@ function doCalculate(countOfNumber) {
 function getResult() {
   //결과값내기
   const countOfNumber = calculateNumber.length; // 숫자배열 길이
-  //console.log(countOfNumber);
+  console.log(countOfNumber);
   reDefineDisplay();
   reDefineProcess();
-  if (countOfNumber === 1) {
+  if (countOfNumber <= 1) {
+    sendWarning("You can't calulate!!");
     return false;
   } else {
     pushInProcess(processNow + displayNow + " = ");
@@ -183,7 +200,10 @@ function deliteNumber() {
   reDefineDisplay();
   reDefineProcess();
 
-  if (displayNow === "0") return false;
+  if (displayNow === "0") {
+    sendWarning("We don't have someting to delite!");
+    return false;
+  }
 
   const lastNum = displayNow.substring(0, displayNow.length - 1);
   calculateNumber[arrayNum] = lastNum;
