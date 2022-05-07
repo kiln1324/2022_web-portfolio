@@ -1,5 +1,7 @@
-const btnNumber = document.querySelectorAll(".num-pads button");
+const btnNumber = document.querySelectorAll(".num-pad");
 const btnOperator = document.querySelectorAll(".operators button");
+
+const btnDot = document.querySelector(".dot-pad");
 const btnClear = document.querySelector(".clear");
 const btnEnter = document.querySelector(".enter");
 const btnDelite = document.querySelector(".delite");
@@ -9,24 +11,32 @@ const process = document.querySelector(".process");
 
 const calculateNumber = []; //계산할 때 사용될 숫자를 담아둘 배열
 const calculateOperators = [];
-let arrayNum = 0; // 배열인덱스를 위한 변수
-let primeProt = 0; //소수점입력 보호
-let resultDone = 0;
+let arrayNum = 0, //배열인덱스를 위한 변수
+  prevResult = 0, // 이전 결과값 저장
+  displayNow, //현재 디스플레이값 저장
+  processNow; // 현재 과정창값 저장
 
-/* const pushInDisplay = function (number) {
-  display.textContent = number;
+//현재 디스플레이값 재정의
+const reDefineDisplay = function () {
+  displayNow = display.innerText;
 };
+
+//현재 과정값 재정의
+const reDefineProcess = function () {
+  processNow = process.innerText;
+};
+
+//디스플레이에 값을 넘기는 함수
+const pushInDisplay = function (number) {
+  display.innerText = number;
+};
+
+// 과정창에 값을 넘기는 함수
 const pushInProcess = function (number) {
-  process.textContent = number;
-}; */
+  process.innerText = number;
+};
 
-function pushInDisplay(number) {
-  display.textContent = number;
-}
-function pushInProcess(number) {
-  process.textContent = number;
-}
-
+//초기화 함수
 function clearDisplay() {
   //계산기 초기화 함수
   pushInDisplay(0); //디스플레이 초기화
@@ -35,132 +45,150 @@ function clearDisplay() {
   calculateOperators.length = 0; //연산자 배열 초기화
   primeProt = 0; //소수점 사용 가능
   arrayNum = 0; //배열 인덱스 변수 초기화
-  resultDone = 0;
-  console.dir(process);
+
+  /* console.log(`리셋 디스플레이값 : ${display.innerText}`);
+  console.log(`리셋 과정창값 : ${process.innerText}`);
+  console.log(`리셋 숫자배열 : ${calculateNumber}`);
+  console.log(`리셋 연산자배열 : ${calculateOperators}`);
+  console.log(`리셋 배열인덱스 : ${arrayNum}`);
+  console.log(`결과값 : ${prevResult}`);
+  console.log(`--------------------------------`); */
 }
 
-function pushNumber(event) {
-  //계산 할 숫자를 display에 push하는 함수
-
-  if (resultDone === 1) clearDisplay();
-  //만약 엔터를 눌러 결과값이 나왔다면 display 초기화
-
-  const btnValue = event.target.value;
-  //console.log(`btnValue값 : ${btnValue} // ${typeof btnValue}`);
-  // 누른 버튼의 숫자값을 가져오는 함수 // 타입스트링
-
-  let displayNow = display.textContent;
-  //현재 디스플레이에 보이는 문자열가져오기
-
-  if (btnValue === ".") {
-    if (primeProt === 1) return false;
-    primeProt = 1;
-    //만약에 누른 버튼이 소수점이면....
-    pushInDisplay(displayNow + btnValue);
+// 소수점 추가 함수
+function pushDot() {
+  reDefineDisplay();
+  if (displayNow === "0") {
+    pushInDisplay("0.");
   } else {
-    //operlator 누르기전까지 배열에 숫자넣기
-    //현재 디스플레이값 가져오기
-
-    //이거로 쓰면 처음 콤마찍힐때마다 diplay 숫자가 리셋됨
-    if (displayNow === "0") {
-      //처음 숫자버튼을 누르면 이미 입력된 숫자 0 을 제외하고 누른 숫자값만 화면에 넣기
-      calculateNumber[arrayNum] = btnValue;
-      pushInDisplay(calculateNumber[arrayNum]);
-
-      //console.log(`계산할 숫자 배열 : ${calculateNumber}`);
+    if (displayNow.indexOf(".") === -1) {
+      //만약 디스플레이에 소수점이 찍혀있지 않는다면~~
+      pushInDisplay(displayNow + ".");
     } else {
-      if (display.textContent.indexOf(".") === -1) {
-        //만약 디스플레이에 소수점이 찍혀있지 않는다면~~
-        //천단위 콤마찍기
-        //단, 1이상의 숫자 소수 3자리 이하 잘림
-        displayNow = display.textContent.replace(/,/g, "");
-        calculateNumber[arrayNum] = displayNow + btnValue;
-
-        pushInDisplay(
-          parseFloat(calculateNumber[arrayNum]).toLocaleString("ko-KR")
-        );
-      } else {
-        //이미 소수점이 display 문자열에 있을 경우
-        calculateNumber[arrayNum] = displayNow + btnValue;
-        pushInDisplay(calculateNumber[arrayNum]);
-      }
+      //이미 소수점이 찍힘
+      return false;
     }
   }
-  //console.log(`계산할 숫자 배열 : ${calculateNumber}`);
+}
+
+//계산 할 숫자를 display에 push하는 함수
+function pushNumber(event) {
+  //만약 이전 결과값이 있다면 display 초기화
+
+  if (prevResult) {
+    clearDisplay();
+    prevResult = 0;
+  }
+
+  reDefineDisplay(); //현재디스플레이값 재정의
+  reDefineProcess(); //현재 과정값 재정의
+  const btnValue = event.target.value;
+  // 누른 버튼의 숫자값 >> 타입 = 스트링
+
+  if (displayNow === "0") {
+    displayNow = btnValue;
+    pushInDisplay(displayNow);
+  } else {
+    //디스플레이 값이 0이 아님
+
+    if (!displayNow.includes(".")) {
+      //만약 디스플레이에 소수점이 찍혀있지 않는다면~~
+
+      displayNow = displayNow + btnValue;
+
+      displayNow = displayNow.replace(/,/g, "");
+      pushInDisplay(parseFloat(displayNow).toLocaleString("ko-KR"));
+    } else {
+      //소수점이면
+      displayNow = displayNow + btnValue;
+      pushInDisplay(displayNow);
+    }
+  }
+  calculateNumber[arrayNum] = displayNow;
 }
 
 function pushOperator(event) {
+  //const btnValue = event.target.value;
   const btnValue = event.target.value;
-  const displayNow = display.textContent;
-  const processNow = process.textContent;
 
-  if (resultDone === 1) {
-    resultDone = 0;
-    const previousValue = displayNow;
-    console.dir(`클리어 전 : ${process.textContent}`);
-    clearDisplay();
-    console.dir(`클리어 후 : ${process.textContent}`);
-    //????????대체 왜 과정창이 리셋이 안되는가:????
-    pushInProcess(previousValue);
-    calculateNumber[arrayNum] = displayNow;
-    console.dir(`클리어 후 추가값 : ${process.textContent}`);
-  }
+  reDefineDisplay(); //현재디스플레이값 재정의
+  reDefineProcess(); //현재 과정값 재정의
 
   if (processNow === "" && displayNow === "0") return false;
-  if (displayNow === "0") {
-    //이미 입력된 연산자 바꾸기
+  //아무것도 없는 상태에서는 연산자를 눌러도 반응이 없도록
+  pushInDisplay(0);
+  if (processNow === "") {
+    //연산자 처음 입력
+    pushInProcess(displayNow + btnValue);
     calculateOperators[arrayNum] = btnValue;
-    const lastStr = processNow.charAt(processNow.length - 1);
-
-    pushInProcess(processNow.replace(lastStr, btnValue));
+    arrayNum++;
+    //console.log(`첫 연산자 입력 : ${processNow}`);
+    // 무조건 0번에 연산자 저장됨
   } else {
-    //새로 연산자를 입력할때
-    pushInProcess(processNow + displayNow + btnValue);
-    pushInDisplay(0);
-    calculateOperators[arrayNum] = btnValue;
+    if (displayNow === "0") {
+      //연산자 바꾸기
 
-    if (calculateNumber.length >= 1) arrayNum++;
-    // 직전에 연산자버튼을 눌러 이미 배열에 들어갔으나 수정 >> 배열숫자가 더해지면 안됨
-    // 새 숫자를 입력하고 그다음 연산자를 추가 >> 배열숫자가 더해져야함
+      //let lastStr = processNow.charAt(processNow.length - 1); //만약 식내에 연산자가 두개이상이고 같은 연산자가 있다면 끝자리가 바뀌는 게 아니라 추출한 연산자중 왼쪽에서 첫번째 연산자가 바뀜
+      calculateOperators[arrayNum - 1] = btnValue;
+      pushInProcess(processNow.substring(0, processNow.length - 1) + btnValue);
+    } else {
+      //연산자 추가
+      if (prevResult || processNow.substr(-1) === "=") {
+        clearDisplay();
+        pushInProcess(prevResult + btnValue);
+        calculateNumber[arrayNum] = prevResult;
+        prevResult = 0;
+        calculateOperators[arrayNum] = btnValue;
+        arrayNum++;
+      } else {
+        calculateOperators[arrayNum] = btnValue;
+        pushInProcess(processNow + displayNow + btnValue);
+      }
+    }
   }
-  //console.log(`연산자 배열 : ${calculateOperators}`);
+
+  /* console.log(
+    `연산자버튼 누른 후 배열 : ${calculateOperators}, 누른 버튼 : ${btnValue}, 배열 인덱스 : ${arrayNum}`
+  ); */
 }
 
 function doCalculate(countOfNumber) {
-  for (let i = 0; i < countOfNumber; i++) {
+  for (let i = 0; i < countOfNumber - 1; i++) {
     let nexti = i + 1;
-    calculateNumber[nexti] =
+    prevResult =
       calculateNumber[i] + calculateOperators[i] + calculateNumber[nexti];
-    //console.log(`배열 : ${calculateNumber[i]}, ${calculateNumber[nexti]}`);
   }
-  //console.log(`계산값 : ${eval(calculateNumber[countOfNumber - 1])}`);
-  return eval(calculateNumber[countOfNumber - 1]);
+  prevResult = eval(prevResult);
+  return prevResult;
 }
+
 function getResult() {
-  pushInProcess(
-    process.textContent + calculateNumber[calculateNumber.length - 1] + " = "
-  );
-  const countOfNumber = calculateNumber.length;
+  //결과값내기
+  const countOfNumber = calculateNumber.length; // 숫자배열 길이
+  //console.log(countOfNumber);
+  reDefineDisplay();
+  reDefineProcess();
   if (countOfNumber === 1) {
-    resultDone = 1;
     return false;
   } else {
+    pushInProcess(processNow + displayNow + " = ");
+
     pushInDisplay(doCalculate(countOfNumber));
-    resultDone = 1;
+    //디스플레이에 prevResult 넣기
   }
 }
 
 function deliteNumber() {
   //display 숫자 하나씩 지우기
-  if (display.textContent === "0") return false;
+  reDefineDisplay();
+  reDefineProcess();
 
-  const lastNum = calculateNumber[arrayNum].substr(-1);
-  calculateNumber[arrayNum] = calculateNumber[arrayNum].replace(lastNum, "");
+  if (displayNow === "0") return false;
 
-  display.textContent =
-    calculateNumber[arrayNum] == ""
-      ? 0
-      : parseInt(calculateNumber[arrayNum]).toLocaleString("ko-KR");
+  const lastNum = displayNow.substring(0, displayNow.length - 1);
+  calculateNumber[arrayNum] = lastNum;
+
+  pushInDisplay(lastNum == "" ? 0 : lastNum);
 }
 
 function eventHandler() {
@@ -171,7 +199,7 @@ function eventHandler() {
   for (let i = 0; i < btnOperator.length; i++) {
     btnOperator[i].addEventListener("click", pushOperator);
   }
-
+  btnDot.addEventListener("click", pushDot);
   btnClear.addEventListener("click", clearDisplay);
   btnEnter.addEventListener("click", getResult);
   btnDelite.addEventListener("click", deliteNumber);

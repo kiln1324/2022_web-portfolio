@@ -95,18 +95,18 @@ button:active {
 .calculator__btn-grp {
   gap: 8px;
 }
-.calculator__btn-grp .num-pads {
+.calculator__btn-grp .num-pad-wrap {
   flex-wrap: wrap-reverse;
   align-items: flex-end;
   flex-grow: 1;
   gap: 8px;
 }
 
-.calculator__btn-grp .num-pads button {
+.calculator__btn-grp .num-pad-wrap button {
   background-color: teal;
 }
 
-.calculator__btn-grp .num-pads button[value="0"] {
+.calculator__btn-grp .num-pad-wrap button[value="0"] {
   width: 128px;
 }
 
