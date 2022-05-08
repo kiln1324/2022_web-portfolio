@@ -1,3 +1,5 @@
+/* ----------------------- 선택자 ------------------------------------- */
+
 const btnNumber = document.querySelectorAll(".num-pad");
 const btnOperator = document.querySelectorAll(".operators button");
 
@@ -9,14 +11,22 @@ const btnDelite = document.querySelector(".delite");
 const display = document.querySelector(".number");
 const process = document.querySelector(".process");
 const warning = document.querySelector(".warning-box");
+/* ------------------------ //선택자 ------------------------------------ */
 
-const calculateNumber = []; //계산할 때 사용될 숫자를 담아둘 배열
-const calculateOperators = [];
+/* ------------------------ 변수 ------------------------------------ */
+
+let calculateNumber = []; //계산할 때 사용될 숫자를 담아둘 배열
+const calculateOperators = []; //연산자 배열
+
 let arrayNum = 0, //배열인덱스를 위한 변수
   prevResult = 0, // 이전 결과값 저장
   displayNow, //현재 디스플레이값 저장
   processNow; // 현재 과정창값 저장
 
+let multiply, division, add, subtraction; //계산을 위한 인덱스값
+/* ------------------------ //변수 ------------------------------------ */
+
+/* ------------------------ 재사용함수 ------------------------------------ */
 //현재 디스플레이값 재정의
 const reDefineDisplay = () => {
   displayNow = display.innerText;
@@ -44,6 +54,15 @@ const sendWarning = (string) => {
     warning.classList.remove("change");
   }, 1200);
 };
+
+//계산을 위한 인덱스 재정의 함수
+const indexOfoperators = () => {
+  multiply = calculateOperators.indexOf("*");
+  division = calculateOperators.indexOf("/");
+  add = calculateOperators.indexOf("+");
+  subtraction = calculateOperators.indexOf("-");
+};
+/* ------------------------ //재사용함수 ------------------------------------ */
 
 //초기화 함수
 function clearDisplay() {
@@ -81,7 +100,7 @@ function pushDot() {
   }
 }
 
-//계산 할 숫자를 display에 push하는 함수
+//계산 할 숫자를 display에 추가하는 함수
 function pushNumber(event) {
   //만약 이전 결과값이 있다면 display 초기화
 
@@ -115,8 +134,10 @@ function pushNumber(event) {
     }
   }
   calculateNumber[arrayNum] = displayNow;
+  console.log(`배열 : ${calculateNumber},${calculateOperators}`);
 }
 
+//과정창과 배열에 연산자 추가 함수
 function pushOperator(event) {
   //const btnValue = event.target.value;
   const btnValue = event.target.value;
@@ -158,6 +179,7 @@ function pushOperator(event) {
       } else {
         calculateOperators[arrayNum] = btnValue;
         pushInProcess(processNow + displayNow + btnValue);
+        arrayNum++;
       }
     }
   }
@@ -167,21 +189,89 @@ function pushOperator(event) {
   ); */
 }
 
-function doCalculate(countOfNumber) {
-  for (let i = 0; i < countOfNumber - 1; i++) {
+//계산 함수
+function doCalculate() {
+  //이전 함수 eval사용
+  /* for (let i = 0; i < countOfNumber - 1; i++) {
     let nexti = i + 1;
     prevResult =
       calculateNumber[i] + calculateOperators[i] + calculateNumber[nexti];
   }
 
   prevResult = eval(prevResult);
+  return prevResult; */
+
+  //연산자배열 잘라내기
+  function sliceOperatorArray(index, string) {
+    index = calculateOperators.indexOf(string);
+    if (countOfOperator === 0) {
+      return false;
+    } else {
+      calculateOperators.splice(index, 1);
+
+      indexOfoperators();
+    }
+  }
+
+  //계산
+  function calculateNumberArray(index, string) {
+    indexOfoperators(); //연산자배열 인덱스 재정의
+
+    // 배열값 타입 숫자로 변환
+    calculateNumber = calculateNumber.map((index) => parseFloat(index));
+
+    //연산자 배열에서 매개변수 연산자 갯수추출
+    countOfOperator = calculateOperators.filter(
+      (element) => string === element
+    ).length;
+
+    // 식에 매개변수 연산자가 0이면 함수끝내기
+    if (countOfOperator == 0) return false;
+
+    for (let i = 0; i < countOfOperator; i++) {
+      sliceOperatorArray(index, string);
+      if (countOfOperator === 0) {
+        return false;
+      } else {
+        switch (string) {
+          case "*":
+            calculateNumber[index] *= calculateNumber[index + 1];
+            break;
+          case "/":
+            calculateNumber[index] /= calculateNumber[index + 1];
+            break;
+          case "+":
+            calculateNumber[index] += calculateNumber[index + 1];
+            break;
+          case "-":
+            calculateNumber[index] -= calculateNumber[index + 1];
+            break;
+
+          default:
+            return false;
+        }
+
+        calculateNumber.splice(index + 1, 1);
+        prevResult = calculateNumber[0];
+      }
+    }
+  }
+
+  calculateNumberArray(multiply, "*");
+
+  calculateNumberArray(division, "/");
+
+  calculateNumberArray(add, "+");
+
+  calculateNumberArray(subtraction, "-");
+
   return prevResult;
 }
 
 function getResult() {
   //결과값내기
   const countOfNumber = calculateNumber.length; // 숫자배열 길이
-  console.log(countOfNumber);
+
   reDefineDisplay();
   reDefineProcess();
   if (countOfNumber <= 1) {
@@ -190,7 +280,7 @@ function getResult() {
   } else {
     pushInProcess(processNow + displayNow + " = ");
 
-    pushInDisplay(doCalculate(countOfNumber));
+    pushInDisplay(doCalculate());
     //디스플레이에 prevResult 넣기
   }
 }
@@ -212,13 +302,20 @@ function deliteNumber() {
 }
 
 function eventHandler() {
-  for (let i = 0; i < btnNumber.length; i++) {
+  btnNumber.forEach((index) => {
+    index.addEventListener("click", pushNumber);
+  });
+  btnOperator.forEach((index) => {
+    index.addEventListener("click", pushOperator);
+  });
+  /*   for (let i = 0; i < btnNumber.length; i++) {
     btnNumber[i].addEventListener("click", pushNumber);
   }
-
+ 
   for (let i = 0; i < btnOperator.length; i++) {
     btnOperator[i].addEventListener("click", pushOperator);
   }
+  */
   btnDot.addEventListener("click", pushDot);
   btnClear.addEventListener("click", clearDisplay);
   btnEnter.addEventListener("click", getResult);
