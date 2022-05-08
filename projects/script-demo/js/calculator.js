@@ -134,7 +134,7 @@ function pushNumber(event) {
     }
   }
   calculateNumber[arrayNum] = displayNow;
-  console.log(`배열 : ${calculateNumber},${calculateOperators}`);
+  //console.log(`배열 : ${calculateNumber},${calculateOperators}`);
 }
 
 //과정창과 배열에 연산자 추가 함수
