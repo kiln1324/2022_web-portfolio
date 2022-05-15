@@ -23,6 +23,18 @@ body {
   font-size: 1.6rem;
 }
 
+body::-webkit-scrollbar {
+  width: 16px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #fff;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: var(--default-color);
+}
+
 button {
   cursor: pointer;
 }
@@ -104,12 +116,10 @@ span::selection {
   transform-origin: right bottom;
   transition: all 0.4s;
 }
-.btn:hover,
-.btn:focus {
+.btn:hover, .btn:focus {
   box-shadow: none;
 }
-.btn:hover:before,
-.btn:focus:before {
+.btn:hover:before, .btn:focus:before {
   transform: translate(0, 0);
   opacity: 1;
   border-radius: 200px;

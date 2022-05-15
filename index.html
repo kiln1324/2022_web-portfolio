@@ -5,280 +5,329 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YUn Portfolio</title>
+    <link rel="shortcut icon" href="img/favicon.ico" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,900;1,100;1,300;1,400;1,900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/index.css" />
   </head>
 
   <body>
-    <div class="bg">
-      <svg viewbox="0 0 1440 320">
-        <defs>
-          <path
-            id="sineWave"
-            d="M0,160 C320,300,420,300,740,160 C1060,20,1120,20,1440,160 V0 H0"
-          />
-        </defs>
-        <use class="wave" href="#sineWave" />
-        <use class="wave" x="-100%" href="#sineWave" />
-        <use class="wave1" href="#sineWave" />
-        <use class="wave1" x="-100%" href="#sineWave" />
-        <use class="wave2" href="#sineWave" />
-        <use class="wave2" x="-100%" href="#sineWave" />
-      </svg>
-    </div>
-
     <header class="header">
-      <h1 class="logo">
-        <a href="#">
-          <svg viewBox="0 0 180 60">
-            <path
-              d="M109.298,58h54.57c3.324,0,6.396-1.777,8.059-4.664c1.664-2.892,1.664-6.45,0-9.336L150.433,6.664
-              C148.771,3.777,145.699,2,142.374,2c-3.325,0-4.521,0.575-8.06,4.664C130.774,10.756,89.894,58,89.894,58
-              c-4.638,0-8.839-1.878-11.88-4.922c-3.04-3.038-4.92-7.238-4.92-11.88V18.801C73.094,9.523,80.614,2,89.894,2h33.601l-50.4,56
-              H34.826c-15.463,0-28-12.537-28-28c0-15.464,12.537-28,28-28C50.29,2,62.827,14.536,62.827,30
-              c0.001,6.766-2.399,12.971-6.394,17.811"
-            />
-          </svg>
-        </a>
+      <h1 class="logo" id="logo">
+        <svg viewBox="0 0 180 60">
+          <path
+            d="M56.433,47.811c3.995-4.84,6.395-11.045,6.394-17.811c0-15.464-12.537-28-28.001-28c-15.463,0-28,12.536-28,28
+              c0,15.463,12.537,28,28,28h38.268l50.4-56H89.894c-9.279,0-16.8,7.523-16.8,16.801v22.397c0,4.642,1.88,8.842,4.92,11.88
+              C81.055,56.122,85.255,58,89.894,58c0,0,40.88-47.244,44.42-51.336C137.853,2.575,139.049,2,142.374,2
+              c3.326,0,6.397,1.777,8.06,4.664L171.926,44c1.664,2.886,1.664,6.444,0,9.336c-1.662,2.887-4.735,4.664-8.059,4.664h-54.57"
+          />
+        </svg>
       </h1>
+
+      <div class="menu-wrap" id="menu">
+        <button class="menu-toggle-btn" id="menuBtn">
+          메뉴 열기
+          <span>1</span>
+          <span>2</span>
+          <span>3</span>
+        </button>
+
+        <nav id="gnb" class="gnb">
+          <ul>
+            <li class="active"><a href="#intro" data-txt="intro">intro</a></li>
+            <li>
+              <a href="#works" data-txt="works">works</a>
+            </li>
+            <li>
+              <a href="#script" data-txt="script">script</a>
+            </li>
+            <li>
+              <a href="#about" data-txt="about">about</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="lnb">
+          <ul>
+            <li>
+              <a
+                href="https://github.com/kiln1324"
+                target="new"
+                data-where="Github"
+              >
+                Yun's Github
+                <svg viewBox="0 0 50 50">
+                  <path
+                    d="M24.998,0.617C11.193,0.617,0,11.81,0,25.617
+                    C0,36.662,7.163,46.032,17.096,49.34c1.251,0.228,1.707-0.544,1.707-1.206c0-0.593-0.022-2.166-0.034-4.252
+                    c-6.953,1.511-8.42-3.352-8.42-3.352c-1.138-2.887-2.777-3.655-2.777-3.655c-2.269-1.553,0.172-1.521,0.172-1.521
+                    c2.509,0.179,3.829,2.576,3.829,2.576c2.23,3.82,5.851,2.718,7.276,2.079c0.227-1.617,0.871-2.719,1.586-3.344
+                    c-5.55-0.63-11.388-2.775-11.388-12.355c0-2.729,0.974-4.96,2.574-6.709c-0.258-0.632-1.115-3.173,0.244-6.615
+                    c0,0,2.1-0.673,6.876,2.563c1.993-0.555,4.132-0.831,6.259-0.841c2.122,0.01,4.261,0.286,6.259,0.841
+                    c4.772-3.235,6.867-2.563,6.867-2.563c1.364,3.442,0.506,5.983,0.249,6.615c1.603,1.749,2.57,3.98,2.57,6.709
+                    c0,9.604-5.845,11.719-11.415,12.336c0.898,0.771,1.697,2.298,1.697,4.631c0,3.341-0.03,6.037-0.03,6.857
+                    c0,0.668,0.45,1.446,1.717,1.203C42.843,46.023,50,36.659,50,25.617C50,11.81,38.806,0.617,24.998,0.617"
+                  />
+                </svg>
+                <!-- <img src="img/ico_github.png" alt="Link to YUn's Github"
+              /> -->
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="kiln1324@gmail.com"
+                data-where="Copy email"
+                class="copyEmail"
+              >
+                copy-email
+                <svg viewBox="0 0 50 50">
+                  <polyline
+                    points="10,17.164 
+    25,26.164 40,17.164 "
+                  />
+                  <path
+                    d="M25,0C11.193,0,0,11.193,0,25s11.193,25,25,25c13.808,0,25-11.193,25-25S38.808,0,25,0z M42,32.333
+    C42,34.358,40.309,36,38.223,36H11.778C9.691,36,8,34.358,8,32.333V17.666C8,15.642,9.691,14,11.778,14h26.444
+    C40.309,14,42,15.642,42,17.666V32.333z"
+                  />
+                </svg>
+                <!-- <img src="img/ico_email.png" alt="Copy YUn email Address" /> -->
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://open.kakao.com/o/sSGtvgce"
+                target="new"
+                data-where="Open Chat"
+              >
+                talk with YUn in kakao chat
+                <svg viewBox="0 0 50 50">
+                  <path
+                    d="M25,0C11.193,0,0,11.193,0,25s11.193,25,25,25c13.808,0,25-11.193,25-25S38.808,0,25,0z M25,38.852
+    c-2.329,0-4.551-0.324-6.612-0.89l-5.954,3.187L14,36.253c-4.836-2.538-7-6.693-7-11.401c0-7.731,7.507-14,18-14
+    s18.001,6.269,18.001,14S35.493,38.852,25,38.852z"
+                  />
+                  <polygon
+                    points="17.639,21.266 11.001,21.266 11.001,22.325 13.612,22.325 13.612,29.305 15.016,29.305 
+    15.016,22.325 17.639,22.325 "
+                  />
+                  <path
+                    d="M20.165,21.266l-2.95,8.039h1.427l0.762-2.294h3.096l0.749,2.294h1.487l-2.95-8.039H20.165z M22.16,26.017
+    h-2.431l0.363-1.081c0.29-0.874,0.567-1.759,0.822-2.677h0.048c0.278,0.907,0.544,1.803,0.846,2.677L22.16,26.017z"
+                  />
+                  <polygon
+                    points="27.067,21.266 25.666,21.266 25.666,29.305 30.828,29.305 30.828,28.234 27.067,28.234 "
+                  />
+                  <polygon
+                    points="38.541,21.266 36.981,21.266 33.597,25.066 33.56,25.066 33.56,21.266 32.157,21.266 32.157,29.305 
+    33.56,29.305 33.56,26.88 34.927,25.372 37.44,29.305 39.001,29.305 35.784,24.367 "
+                  />
+                </svg>
+                <!-- <img
+                  src="img/ico_kakao.png"
+                  alt="Talk with YUn in Open
+                Chat"
+                /> -->
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </header>
 
-    <aside class="aside">
-      <nav id="gnb" class="gnb">
-        <ul>
-          <li class="active"><a href="#intro" data-txt="intro">intro</a></li>
-
-          <!--  <li><a href="#">publishing</a></li>
-          <li><a href="#">animation</a></li>
-           -->
-          <li>
-            <a class="colorChange" href="#works" data-txt="works">works</a>
-          </li>
-          <li>
-            <a class="colorChange" href="#script" data-txt="script">script</a>
-          </li>
-          <li>
-            <a class="colorChange" href="#about" data-txt="about">about</a>
-          </li>
-        </ul>
-      </nav>
-
-      <div class="lnb">
-        <ul>
-          <li>
-            <a
-              href="https://github.com/kiln1324"
-              target="new"
-              data-where="Github"
-              ><img src="img/ico_github.png" alt="Link to YUn's Github"
-            /></a>
-          </li>
-          <li>
-            <a href="#" data-where="Copy email" class="copyEmail"
-              ><img src="img/ico_email.png" alt="Copy YUn email Address"
-            /></a>
-          </li>
-          <li>
-            <a
-              href="https://open.kakao.com/o/sSGtvgce"
-              target="new"
-              data-where="Open Chat"
-              ><img
-                src="img/ico_kakao.png"
-                alt="Talk with YUn in Open
-              Chat"
-            /></a>
-          </li>
-        </ul>
-      </div>
-    </aside>
-
-    <main class="main">
+    <main class="main" id="main">
       <div class="container">
-        <h2 class="main-tit">YUn DASEUL</h2>
+        <h2 class="main-tit">
+          YUn<br />
+          DASEUL
+        </h2>
         <p class="welcom-ment">Portfolio</p>
       </div>
-      <a href="#" class="go-works-btn btn">look around the works</a>
+      <button class="go-works-btn btn" data-txt="works">
+        look around the works
+      </button>
     </main>
 
     <section id="works" class="works">
       <article id="publishing" class="publishing">
         <h2 class="sec-tit">publising</h2>
-        <div class="inner">
-          <div class="publishing_list">
-            <ul>
-              <li class="publishing-project">
-                <div class="img-wrap">
-                  <div class="img-box">
-                    <img
-                      src="img/preview/ogada_thumnail-mini.jpg"
-                      alt="카페 오가다"
-                    />
-                  </div>
-                  <p class="project-link">
-                    <a href="#" class="to-info" data-txt="프로젝트 상세보기"
-                      >프로젝트 상세보기</a
-                    >
-                    <a
-                      href="https://kiln1324.github.io/ogada/"
-                      target="new"
-                      class="to-web"
-                      data-txt="웹사이트 보기"
-                      >웹사이트 보기</a
-                    >
-                  </p>
-                </div>
-                <div class="txt-wrap">
-                  <h3 class="title-txt">
-                    <p>PC 페이지</p>
-                    오가다 웹사이트 리뉴얼
-                  </h3>
 
-                  <p class="project-des">
-                    와이어프레임, 디자인 시안, 구현까지<br />전체 프로세스를
-                    경험한 작업물입니다.<br />
-                    jQeury를 사용하여 자동슬라이더, 모달, 호버효과, 스크롤
-                    이벤트를 구현하였습니다.
-                  </p>
-                  <ul class="tags">
-                    <li>#자동_슬라이더</li>
-                    <li>#풀페이지 _퍼블리싱</li>
-                    <li>#아코디언_메뉴</li>
-                    <li>#모달</li>
-                    <li>#스크롤_이벤트</li>
-                  </ul>
-                </div>
-              </li>
-
-              <li class="publishing-project">
-                <div class="img-wrap">
-                  <div class="img-box">
-                    <img
-                      src="img/preview/trvel_thumnail.jpg"
-                      alt="여행 사이트 템플릿 퍼블리싱"
-                    />
-                  </div>
-                  <p class="project-link">
-                    <a href="#" class="to-info" data-txt="프로젝트 상세보기"
-                      >프로젝트 상세보기</a
-                    >
-                    <a
-                      href="https://kiln1324.github.io/publishing_practice01/"
-                      target="new"
-                      class="to-web"
-                      data-txt="웹사이트 보기"
-                      >웹사이트 보기</a
-                    >
-                  </p>
-                </div>
-                <div class="txt-wrap">
-                  <h3 class="title-txt">
-                    <p>반응형 페이지</p>
-                    여행 사이트 템플릿 퍼블리싱
-                  </h3>
-
-                  <p class="project-des">
-                    이미 작업되어있는 PC기준 디자인 시안을 기반으로
-                    작업했습니다.<br />SASS를 이용하였고, 반응형 페이지로
-                    구현하였습니다.
-                  </p>
-                  <ul class="tags">
-                    <li>#스크롤_이벤트</li>
-                    <li>#반응형</li>
-                    <li>#SASS</li>
-                  </ul>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </article>
-
-      <!-- <article id="animation" class="animation">
-        <div class="inner">
-          <div class="animation-list">
-            <ul>
-              <li>
-                <a href="#"> div.img </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </article> -->
-
-      <article id="script" class="script">
-        <h2 class="sec-tit">script</h2>
-        <div class="inner">
+        <div class="publishing_list">
           <ul>
-            <li>
-              <a href="https://kiln1324.github.io/momentum-clone/">
+            <li class="publishing-project">
+              <div class="img-wrap">
                 <div class="img-box">
                   <img
-                    src="img/preview/momentum_thumnail.jpg"
-                    alt="모멘텀 투두리스트 웹앱"
+                    src="img/preview/ogada_thumnail-mini.jpg"
+                    alt="카페 오가다"
                   />
                 </div>
-                <div class="script-detail">
-                  <h3 class="title">모멘텀 클론 코딩</h3>
-                  <p class="des">
-                    크롬브라우저 확장프로그램 Momentum을 클론해 만든 TodoList
-                    웹앱입니다. <br />랜덤 배경과 명언, 로컬스토리지를 사용한
-                    로그인, 플립효과 시계, 날씨API를 사용해 간단한 현재위치 날씨
-                    정보를 제공합니다.
-                  </p>
-                </div>
-              </a>
+                <p class="project-link">
+                  <a
+                    href="https://twitter.com/"
+                    class="to-info"
+                    data-txt="프로젝트 상세보기"
+                  >
+                    <img
+                      src="img/ico_info.png"
+                      alt="프로젝트 상세보기 ico"
+                    />프로젝트 상세보기
+                  </a>
+                  <a
+                    href="https://kiln1324.github.io/ogada/"
+                    target="new"
+                    class="to-web"
+                    data-txt="웹사이트 보기"
+                    ><img
+                      src="img/ico_link.png"
+                      alt="웹사이트 보기 ico"
+                    />웹사이트 보기</a
+                  >
+                </p>
+              </div>
+              <div class="txt-wrap">
+                <h3 class="title-txt">
+                  <p>PC 페이지</p>
+                  오가다 웹사이트 리뉴얼
+                </h3>
+
+                <p class="project-des">
+                  와이어프레임, 디자인 시안, 구현까지<br />전체 프로세스를
+                  경험한 작업물입니다.<br />
+                  jQeury를 사용하여 자동슬라이더, 모달, 호버효과, 스크롤
+                  이벤트를 구현하였습니다.
+                </p>
+                <ul class="tags">
+                  <li>#자동_슬라이더</li>
+                  <li>#풀페이지 _퍼블리싱</li>
+                  <li>#아코디언_메뉴</li>
+                  <li>#모달</li>
+                  <li>#스크롤_이벤트</li>
+                </ul>
+              </div>
             </li>
-            <li>
-              <a
-                href="https://kiln1324.github.io/2022_web-portfolio/projects/script-demo/calculator.html"
-              >
+
+            <li class="publishing-project">
+              <div class="img-wrap">
                 <div class="img-box">
                   <img
-                    src="img/preview/calculator_thumnail.jpg"
-                    alt="웹 계산기"
+                    src="img/preview/trvel_thumnail.jpg"
+                    alt="여행 사이트 템플릿 퍼블리싱"
                   />
                 </div>
-                <div class="script-detail">
-                  <h3 class="title">간단 웹 계산기</h3>
-                  <p class="des">
-                    Vanila JavaScript로 구현한 웹에서 동작하는 계산기로 간단한
-                    사칙연산을 할 수 있습니다.
-                  </p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <div class="img-box">
-                  <img
-                    src="img/preview/momentum_thumnail.jpg"
-                    alt="모멘텀 투두리스트 웹앱"
-                  />
-                </div>
-                <div class="script-detail">
-                  <h3 class="title">슬라이더</h3>
-                  <p class="des">
-                    Vanila JavaScript를 사용해 만든 다양한 종류의 슬라이더를
-                    구현하였습니다.
-                  </p>
-                </div>
-              </a>
+
+                <p class="project-link">
+                  <a href="#" class="to-info" data-txt="프로젝트 상세보기">
+                    <img
+                      src="img/ico_info.png"
+                      alt="프로젝트 상세보기 ico"
+                    />프로젝트 상세보기
+                  </a>
+                  <a
+                    href="https://kiln1324.github.io/2022_web-portfolio/projects/publishing/publishing_practice01/"
+                    target="new"
+                    class="to-web"
+                    data-txt="웹사이트 보기"
+                    ><img
+                      src="img/ico_link.png"
+                      alt="웹사이트 보기 ico"
+                    />웹사이트 보기</a
+                  >
+                </p>
+              </div>
+              <div class="txt-wrap">
+                <h3 class="title-txt">
+                  <p>반응형 페이지</p>
+                  여행 사이트 템플릿 퍼블리싱
+                </h3>
+
+                <p class="project-des">
+                  이미 작업되어있는 PC기준 디자인 시안을 기반으로
+                  작업했습니다.<br />
+                  SASS를 이용하였고, 반응형 페이지로 구현하였습니다.
+                </p>
+                <ul class="tags">
+                  <li>#스크롤_이벤트</li>
+                  <li>#반응형</li>
+                  <li>#SASS</li>
+                </ul>
+              </div>
             </li>
           </ul>
         </div>
       </article>
+
+      <article id="script" class="script">
+        <h2 class="sec-tit">script</h2>
+        <!--  <div class="inner"> -->
+        <ul>
+          <li>
+            <a href="https://kiln1324.github.io/momentum-clone/">
+              <div class="img-box">
+                <img
+                  src="img/preview/momentum_thumnail.gif"
+                  alt="모멘텀 투두리스트 웹앱"
+                />
+              </div>
+              <div class="script-detail">
+                <h3 class="title">모멘텀 클론 코딩</h3>
+                <p class="des">
+                  크롬브라우저 확장프로그램 Momentum을 클론해 만든 TodoList
+                  웹앱입니다. 랜덤 배경과 명언, 로컬스토리지를 사용한 로그인,
+                  플립효과 시계, 날씨API를 사용해 간단한 현재위치 날씨 정보를
+                  제공합니다.
+                </p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://kiln1324.github.io/2022_web-portfolio/projects/script-demo/calculator.html"
+            >
+              <div class="img-box">
+                <img
+                  src="img/preview/calculator_thumnail.gif"
+                  alt="웹 계산기"
+                />
+              </div>
+              <div class="script-detail">
+                <h3 class="title">간단 웹 계산기</h3>
+                <p class="des">
+                  Vanila JavaScript로 구현한 웹에서 동작하는 계산기입니다.
+                  연산자 우선순위에 따라 간단한 사칙연산을 할 수 있습니다.
+                </p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://kiln1324.github.io/2022_web-portfolio/projects/script-demo/slider01.html"
+            >
+              <div class="img-box">
+                <img
+                  src="img/preview/slider01_thumnail.gif"
+                  alt="jQuery Demo Slider"
+                />
+              </div>
+              <div class="script-detail">
+                <h3 class="title">슬라이더</h3>
+                <p class="des">jQuery를 사용하여 만든 이미지슬라이더입니다.</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <!-- </div> -->
+      </article>
     </section>
 
     <section id="about" class="about">
-      <article id="me" class="me">
+      <article class="me">
         <h2 class="sec-tit">about</h2>
-
         <ul class="me-cards">
           <li class="info-card">
             <div class="img-card">
@@ -287,7 +336,7 @@
 
             <div class="introduce-card">
               <p class="hello">
-                하나하나 천천히 확실하게 배워<br />성장하는
+                하나하나 천천히 확실하게 배워 성장하는
                 <span>윤다슬</span>입니다
               </p>
 
@@ -310,7 +359,7 @@
               </div>
             </div>
 
-            <div class="info-btn-grp">
+            <!-- <div class="info-btn-grp">
               <a
                 download="윤다슬_이력서"
                 href="flies/Resume_YUn-Daseul.pdf"
@@ -327,7 +376,7 @@
                 target="_blank"
                 >PDF 포트폴리오 다운로드</a
               >
-            </div>
+            </div> -->
           </li>
 
           <li class="skill-list">
@@ -346,11 +395,6 @@
                 수 있습니다. 미디어 쿼리를 활용하여 반응형 웹을 구현합니다. CSS
                 Animation을 사용해 요소에 움직임을 줄 수 있습니다.
               </p>
-            </div>
-
-            <div class="skill-card">
-              <h3><a href="#">Sass</a></h3>
-              <p class="des"></p>
             </div>
 
             <div class="skill-card">
@@ -385,7 +429,7 @@
       </article>
     </section>
 
-    <footer>
+    <footer class="footer">
       <div class="contact">
         <h3 class="ment">
           저에게 하고 싶은 이야기가 있으시다면<br /><span
@@ -399,28 +443,88 @@
                 href="https://github.com/kiln1324"
                 target="new"
                 data-where="Github"
-                ><img src="img/ico_github.png" alt="Link to YUn's Github"
-              /></a>
+              >
+                Yun's Github
+                <svg viewBox="0 0 50 50">
+                  <path
+                    d="M24.998,0.617C11.193,0.617,0,11.81,0,25.617
+                    C0,36.662,7.163,46.032,17.096,49.34c1.251,0.228,1.707-0.544,1.707-1.206c0-0.593-0.022-2.166-0.034-4.252
+                    c-6.953,1.511-8.42-3.352-8.42-3.352c-1.138-2.887-2.777-3.655-2.777-3.655c-2.269-1.553,0.172-1.521,0.172-1.521
+                    c2.509,0.179,3.829,2.576,3.829,2.576c2.23,3.82,5.851,2.718,7.276,2.079c0.227-1.617,0.871-2.719,1.586-3.344
+                    c-5.55-0.63-11.388-2.775-11.388-12.355c0-2.729,0.974-4.96,2.574-6.709c-0.258-0.632-1.115-3.173,0.244-6.615
+                    c0,0,2.1-0.673,6.876,2.563c1.993-0.555,4.132-0.831,6.259-0.841c2.122,0.01,4.261,0.286,6.259,0.841
+                    c4.772-3.235,6.867-2.563,6.867-2.563c1.364,3.442,0.506,5.983,0.249,6.615c1.603,1.749,2.57,3.98,2.57,6.709
+                    c0,9.604-5.845,11.719-11.415,12.336c0.898,0.771,1.697,2.298,1.697,4.631c0,3.341-0.03,6.037-0.03,6.857
+                    c0,0.668,0.45,1.446,1.717,1.203C42.843,46.023,50,36.659,50,25.617C50,11.81,38.806,0.617,24.998,0.617"
+                  />
+                </svg>
+                <!-- <img src="img/ico_github.png" alt="Link to YUn's Github"
+              /> -->
+              </a>
             </li>
+
             <li>
-              <a href="#" data-where="Copy email" class="copyEmail"
-                ><img src="img/ico_email.png" alt="Copy YUn email Address"
-              /></a>
+              <a
+                href="kiln1324@gmail.com"
+                data-where="Copy email"
+                class="copyEmail"
+              >
+                copy-email
+                <svg viewBox="0 0 50 50">
+                  <polyline
+                    points="10,17.164 
+    25,26.164 40,17.164 "
+                  />
+                  <path
+                    d="M25,0C11.193,0,0,11.193,0,25s11.193,25,25,25c13.808,0,25-11.193,25-25S38.808,0,25,0z M42,32.333
+    C42,34.358,40.309,36,38.223,36H11.778C9.691,36,8,34.358,8,32.333V17.666C8,15.642,9.691,14,11.778,14h26.444
+    C40.309,14,42,15.642,42,17.666V32.333z"
+                  />
+                </svg>
+                <!-- <img src="img/ico_email.png" alt="Copy YUn email Address" /> -->
+              </a>
             </li>
+
             <li>
               <a
                 href="https://open.kakao.com/o/sSGtvgce"
                 target="new"
                 data-where="Open Chat"
-                ><img
+              >
+                talk with YUn in kakao chat
+                <svg viewBox="0 0 50 50">
+                  <path
+                    d="M25,0C11.193,0,0,11.193,0,25s11.193,25,25,25c13.808,0,25-11.193,25-25S38.808,0,25,0z M25,38.852
+    c-2.329,0-4.551-0.324-6.612-0.89l-5.954,3.187L14,36.253c-4.836-2.538-7-6.693-7-11.401c0-7.731,7.507-14,18-14
+    s18.001,6.269,18.001,14S35.493,38.852,25,38.852z"
+                  />
+                  <polygon
+                    points="17.639,21.266 11.001,21.266 11.001,22.325 13.612,22.325 13.612,29.305 15.016,29.305 
+    15.016,22.325 17.639,22.325 "
+                  />
+                  <path
+                    d="M20.165,21.266l-2.95,8.039h1.427l0.762-2.294h3.096l0.749,2.294h1.487l-2.95-8.039H20.165z M22.16,26.017
+    h-2.431l0.363-1.081c0.29-0.874,0.567-1.759,0.822-2.677h0.048c0.278,0.907,0.544,1.803,0.846,2.677L22.16,26.017z"
+                  />
+                  <polygon
+                    points="27.067,21.266 25.666,21.266 25.666,29.305 30.828,29.305 30.828,28.234 27.067,28.234 "
+                  />
+                  <polygon
+                    points="38.541,21.266 36.981,21.266 33.597,25.066 33.56,25.066 33.56,21.266 32.157,21.266 32.157,29.305 
+    33.56,29.305 33.56,26.88 34.927,25.372 37.44,29.305 39.001,29.305 35.784,24.367 "
+                  />
+                </svg>
+                <!-- <img
                   src="img/ico_kakao.png"
                   alt="Talk with YUn in Open
-                  Chat"
-              /></a>
+                Chat"
+                /> -->
+              </a>
             </li>
           </ul>
         </div>
       </div>
+
       <div class="footer-logo">
         <a href="#">
           <svg viewBox="0 0 180 60">
@@ -438,28 +542,12 @@
         COPYRIGHT ⓒ 2022 Yun Daseul. ALL RIGHTS RESERVED.<br />
         본 사이트는 개인 포트폴리오 사이트로 제작되었습니다
       </p>
-      <!-- <div class="footer-box">
-        <p class="copy">
-          COPYRIGHT ⓒ 2022 Yun Daseul. ALL RIGHTS RESERVED.<br />
-          본 사이트는 개인 포트폴리오 사이트로 제작되었습니다
-        </p>
-        <p class="bg-source">
-          <span class="ment"
-            >멋진 배경사진을 찍은 작가님
-            &#129027;&#129027;&#129027;&#129027;</span
-          >
-          Photo by
-          <a
-            href="https://unsplash.com/@rhindaxu?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-            >&#10024;&#10024;Linda Xu&#10024;&#10024;</a
-          >
-          on
-          <a
-            href="https://unsplash.com/s/photos/sea-illust?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-            >Unsplash</a
-          >
-        </p>
-      </div> -->
     </footer>
+
+    <div id="alertBox" class="alert-box">Email 주소가 복사되었습니다.</div>
+
+    <script src="js/mainShow.js"></script>
+    <script src="js/menuHandler.js"></script>
+    <script src="js/about.js"></script>
   </body>
 </html>

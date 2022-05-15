@@ -1,0 +1,54 @@
+.header {
+  .logo {
+    transform: translateY(40vh);
+    path {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 0;
+      animation: drowlogo 2s ease-in-out;
+    }
+  }
+}
+
+.main {
+  opacity: 0;
+  animation: changeopacity 0.8s ease-in-out 2.2s forwards;
+}
+
+.main {
+  opacity: 0;
+}
+
+.menu-wrap {
+  opacity: 0;
+}
+
+.menu-toggle-btn {
+  opacity: 0;
+}
+
+@keyframes drowlogo {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes returnlogo {
+  from {
+    transform: translateY(40vh);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes changeopacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
