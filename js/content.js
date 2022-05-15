@@ -4,6 +4,8 @@ const skillCard = document.querySelectorAll(".skill-card");
 const btnEmail = document.querySelectorAll(".copyEmail");
 const alertBox = document.getElementById("alertBox");
 
+const footerLogo = document.querySelector(".footer-logo");
+
 function toggleSkillCard(evnet) {
   evnet.preventDefault();
   Array.from(skillCard).indexOf(this);
@@ -13,8 +15,8 @@ function toggleSkillCard(evnet) {
   this.classList.add(CLASSNAME_ACTIVE);
 }
 
-function copyEmail(evnet) {
-  evnet.preventDefault();
+function copyEmail(event) {
+  event.preventDefault();
   const addressEmail = this.getAttribute("href");
   console.log(addressEmail);
 
@@ -32,4 +34,9 @@ skillCard.forEach((list) => {
 
 btnEmail.forEach((list) => {
   list.addEventListener("click", copyEmail);
+});
+
+footerLogo.addEventListener("click", function (event) {
+  event.preventDefault();
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
