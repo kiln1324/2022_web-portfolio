@@ -18,7 +18,7 @@ const aboutLocate = about.offsetTop;
 
 const CLASSNAME_ACTIVE = "active";
 /* ------------------------------------------------------//변수 */
-console.dir(gnbMenu[0]);
+
 /* ------------------------------------------------------함수 */
 for (let i = 0; i < gnbMenu.length; i++) {
   const dataName = gnbMenu[i].querySelector("a").getAttribute("data-txt");
